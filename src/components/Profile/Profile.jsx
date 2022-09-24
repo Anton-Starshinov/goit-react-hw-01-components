@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   ProfileCard,
   Description,
@@ -24,18 +25,32 @@ export const Profile = ({
 
       <StatsList>
         <StatsItem>
-          <StatsEl class="label">Followers</StatsEl>
-          <StatsElNumber class="quantity">{stats.followers}</StatsElNumber>
+          <StatsEl>Followers</StatsEl>
+          <StatsElNumber>{stats.followers}</StatsElNumber>
         </StatsItem>
         <StatsItem>
-          <StatsEl class="label">Views</StatsEl>
-          <StatsElNumber class="quantity">{stats.views}</StatsElNumber>
+          <StatsEl>Views</StatsEl>
+          <StatsElNumber>{stats.views}</StatsElNumber>
         </StatsItem>
         <StatsItem>
-          <StatsEl class="label">Likes</StatsEl>
-          <StatsElNumber class="quantity">{stats.likes}</StatsElNumber>
+          <StatsEl>Likes</StatsEl>
+          <StatsElNumber>{stats.likes}</StatsElNumber>
         </StatsItem>
       </StatsList>
     </ProfileCard>
   );
+};
+
+Profile.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    tag: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    avatar: PropTypes.string.isRequired,
+    stats: PropTypes.exact({
+      followers: PropTypes.number.isRequired,
+      views: PropTypes.number.isRequired,
+      likes: PropTypes.number.isRequired,
+    }),
+  }),
 };

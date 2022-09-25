@@ -6,6 +6,7 @@ export const StatisticsSection = styled.section`
   align-items: center;
   flex-direction: column;
   margin-left: 30px;
+  margin-top: 30px;
   border: 1px solid black;
   background-color: rgb(227, 241, 248);
 `;

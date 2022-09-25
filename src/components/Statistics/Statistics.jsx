@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types';
+import { getRandomHexColor } from './RandomColor';
 import {
   StatisticsSection,
   StatisticsTitle,
@@ -11,11 +12,17 @@ import {
 export const Statistics = ({ title, stats }) => {
   return (
     <StatisticsSection>
-      <StatisticsTitle>Upload stats</StatisticsTitle>
+      {title ? <StatisticsTitle>{title}</StatisticsTitle> : null}
 
       <StatisticsList>
         {stats.map(stat => (
-          <StatisticsItem id={stat.id} key={stat.id}>
+          <StatisticsItem
+            id={stat.id}
+            key={stat.id}
+            style={{
+              backgroundColor: getRandomHexColor(),
+            }}
+          >
             <Label>{stat.label}</Label>
             <Percentage>{stat.percentage}</Percentage>
           </StatisticsItem>
@@ -23,4 +30,11 @@ export const Statistics = ({ title, stats }) => {
       </StatisticsList>
     </StatisticsSection>
   );
+};
+
+Statistics.propTypes = {
+  data: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    stats: PropTypes.array.isRequired,
+  }),
 };
